@@ -1,29 +1,30 @@
-import Lenis from "lenis";
+import { useEffect } from "react";
+import Lenis from "lenis"; // Ensure you are using the latest version
 
 export default function SmoothScrolling({ children }) {
-  // These specific configuration values are tuned for a "heavy, cinematic" feel
-  // rather than a slippery, overly-fast scroll.
+  useEffect(() => {
+    // 1. Initialize Lenis with 'new'
+    const lenis = new Lenis({
+      lerp: 0.1,
+      duration: 1.2,
+      smoothWheel: true,
+    });
 
-  const lenis = new Lenis();
-  lenis.on("scroll", (e) => {
-    console.log(e);
-  });
-  function raf(time) {
-    lenis.raf(time);
-    requestAnimationFrame(raf);
-  }
-  requestAnimationFrame(raf);
+    // 2. Define the animation frame loop
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
 
-  const lenisOptions = {
-    lerp: 0.08, // The "tightness" of the scroll. Lower = smoother but heavier.
-    duration: 1.5, // How long the momentum lasts
-    smoothTouch: false, // Keep native touch scrolling on mobile for better UX
-    wheelMultiplier: 1, // How fast the mouse wheel scrolls
-  };
+    // 3. Start the loop
+    const rAF = requestAnimationFrame(raf);
 
-  return (
-    <Lenis root options={lenisOptions}>
-      {children}
-    </Lenis>
-  );
+    // 4. Cleanup on component unmount
+    return () => {
+      cancelAnimationFrame(rAF);
+      lenis.destroy();
+    };
+  }, []);
+
+  return <>{children}</>;
 }
