@@ -1,7 +1,18 @@
 import React from "react";
+import { ReactLenis } from "lenis/react"; // <-- Crucial
+import EditorialGrid from "./components/ui/EditorialGrid";
 
-const App = () => {
-  return <div></div>;
-};
+export default function App() {
+  const lenisOptions = {
+    lerp: 0.08,
+    smoothWheel: true,
+  };
 
-export default App;
+  return (
+    <ReactLenis root options={lenisOptions}>
+      <main className="bg-[#050505] min-h-screen text-[#E5E5E5] antialiased">
+        <EditorialGrid />
+      </main>
+    </ReactLenis>
+  );
+}
