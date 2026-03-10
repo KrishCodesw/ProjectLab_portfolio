@@ -87,11 +87,11 @@ export default function Projects() {
           performance, structure and clarity.
         </p>
       </section> */}
-      <section className="px-8 md:px-20 py-20 md:py-32 max-w-7xl mx-auto">
+      <section className="px-8 md:px-20 py-20 md:py-32 max-w-7xl gap-7 mx-auto">
         <div className="grid md:grid-cols-2 gap-16 items-center">
           {/* TEXT */}
           <div>
-            <h1 className="font-monument font-extralight text-[64px] md:text-[140px] leading-[0.9] tracking-tighter">
+            <h1 className="font-monument font-extralight text-[48px] md:text-[100px] leading-[0.9] tracking-tighter">
               PROJECTS <br /> THAT MATTER.
             </h1>
 
@@ -102,7 +102,7 @@ export default function Projects() {
           </div>
 
           {/* 3D LAB */}
-          <div className="h-[350px] md:h-[500px] w-full">
+          <div className="h-57.5 md:h-100 w-full">
             {/* <Suspense fallback={null}> */}
             <LabScene />
             {/* </Suspense> */}
