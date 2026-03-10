@@ -2,6 +2,8 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Magnetic from "./Magnetic";
+import LabScene from "./Lab";
+// import { Suspense } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -75,8 +77,8 @@ export default function Projects() {
   return (
     <div className="bg-black text-white">
       {/* HERO */}
-      <section className="px-8 md:px-20 py-32 max-w-400 mx-auto">
-        <h1 className="font-monument text-[64px] md:text-[140px] leading-[0.9] tracking-tight">
+      {/* <section className="px-8 md:px-20 py-32 max-w-400 mx-auto">
+        <h1 className="font-monument font-extralight text-[64px] md:text-[140px] leading-[0.9] tracking-tighter">
           PROJECTS <br /> THAT MATTER.
         </h1>
 
@@ -84,6 +86,28 @@ export default function Projects() {
           A collection of digital products and systems designed with a focus on
           performance, structure and clarity.
         </p>
+      </section> */}
+      <section className="px-8 md:px-20 py-20 md:py-32 max-w-7xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-16 items-center">
+          {/* TEXT */}
+          <div>
+            <h1 className="font-monument font-extralight text-[64px] md:text-[140px] leading-[0.9] tracking-tighter">
+              PROJECTS <br /> THAT MATTER.
+            </h1>
+
+            <p className="font-montreal text-gray-500 mt-8 max-w-xl text-lg">
+              A collection of digital products and systems designed with a focus
+              on performance, structure and clarity.
+            </p>
+          </div>
+
+          {/* 3D LAB */}
+          <div className="h-[350px] md:h-[500px] w-full">
+            {/* <Suspense fallback={null}> */}
+            <LabScene />
+            {/* </Suspense> */}
+          </div>
+        </div>
       </section>
 
       {/* PROJECT SECTION */}
@@ -97,7 +121,7 @@ export default function Projects() {
               key={i}
               className="panel w-full md:w-screen flex items-center justify-center border-r border-white/20 px-8 md:px-20 py-20 md:py-0"
             >
-              <div className="w-full max-w-[1200px]">
+              <div className="w-full max-w-300">
                 {/* IMAGE */}
                 <div className="overflow-hidden border border-white/20">
                   <img
